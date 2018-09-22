@@ -1,0 +1,51 @@
+﻿@model Data.Models.EuroFixture
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Fixture</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FixtureDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FixtureDate) eg. mm/dd/yyyy HH:MM
+            @Html.ValidationMessageFor(model => model.FixtureDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HomeTeam)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.HomeTeam, (ViewData["TeamList"] as SelectList))
+            @Html.ValidationMessageFor(model => model.HomeTeam)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AwayTeam)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AwayTeam, (ViewData["TeamList"] as SelectList))
+            @Html.ValidationMessageFor(model => model.AwayTeam)
+        </div>
+
+        <p>
+            <input type="submit" value="Add Fixture" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Fixtures", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

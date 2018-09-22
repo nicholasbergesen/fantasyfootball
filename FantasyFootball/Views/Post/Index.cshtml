@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Data.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("New Post", "Create")
+</p>
+
+@foreach (var item in Model) {
+    <div class="postDisplay">
+        <div class="display-label">
+            <i><strong>@item.PostedBy</strong> @@ @item.DatePosted</i>
+        </div>  
+
+        @Html.Raw(item.Comment)
+    </div>
+    
+    if(User.Identity.Name.ToLower().Equals(item.PostedBy.ToLower()) || User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </p>
+    }
+}

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Data.Models.UserPremierScore>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Score Log</h2>
+
+<table>
+    <tr>
+        <th>
+            User
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Exact Predictions
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExactPredictions)
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+<br />
+<centre>
+    <h4>Scoring System</h4>
+
+    <ul>
+        <li>Being the only one with an exact prediction - <strong>4 points.</strong></li>
+        <li>More than one person with an exact prediction - <strong>3 points.</strong></li>
+        <li>Predicting the correct outcome - <strong>1 point.</strong></li>
+
+        <p>If there's a draw at the end of the season, the winner will be determined by the number exact predictions.</p>
+    </ul>
+</centre>

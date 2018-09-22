@@ -1,0 +1,37 @@
+﻿@model Data.Models.Post
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Post</legend>
+        <br />
+        <div class="new-editor-field" id="focusme">
+            @Html.TextAreaFor(model => model.Comment,  new { @class = "postarea" })
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+
+        <p>
+            <input type="submit" value="Post" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to posts", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $('#focusme').focus();
+        });
+    });
+    </script>
+}

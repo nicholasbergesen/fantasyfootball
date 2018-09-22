@@ -1,0 +1,32 @@
+﻿@model Data.Models.PremierFixture
+
+@{
+    ViewBag.Title = "Prediction List";
+}
+
+<h2>@Model.HomeTeam vs @Model.AwayTeam - Predictions</h2>
+
+@if (User.IsInRole("Admin"))
+{
+        @Html.ActionLink("Add Admin Prediction", "AdminCreate", new { FixtureId = @Model.Id })
+}
+
+@if ((int)ViewData["HasUserPosted"] == 0)
+{
+    <p>
+        @if(DateTime.Now < Model.FixtureDate)
+        {
+            @Html.ActionLink("Add Prediction", "Create", new { FixtureId = @Model.Id })
+            <p>Once you post your prediction you will be able to view other predictions.</p>
+        }
+        else
+        {
+            <p>Posting is closed for this fixture.</p>
+        }
+    </p>
+    
+}
+@if (User.Identity.Name.Equals("Bergie", StringComparison.InvariantCultureIgnoreCase) || (int)ViewData["HasUserPosted"] > 0)
+{
+    @Html.Partial("_Predictions", Model.PremierPedictions)
+}

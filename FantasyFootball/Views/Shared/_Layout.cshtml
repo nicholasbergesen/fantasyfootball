@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Fantasy Football</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("Barclays Premier League", "Index", "PremierFixture")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    @if(User.Identity.IsAuthenticated){
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Premier League", "Index", "PremierFixture")</li>
+                            <li>@Html.ActionLink("Premier Score", "Index", "UserPremierScore")</li>
+                            <li>@Html.ActionLink("Champions League", "Index", "ChampionFixture")</li>
+                            <li>@Html.ActionLink("Champions Score", "Index", "UserChampionScore")</li>
+                            <li>@Html.ActionLink("Euro League", "Index", "EuroFixture")</li>
+                            <li>@Html.ActionLink("Euro Score", "Index", "UserEuroScore")</li>
+                            <li>@Html.ActionLink("Posts", "Index", "Post")</li>
+                            <li>@Html.ActionLink("Games", "Index", "Fun")</li>
+                        </ul>
+                    </nav>
+                    }
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+            
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Nicholas Bergesen</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

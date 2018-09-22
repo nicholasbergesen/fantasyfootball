@@ -1,0 +1,46 @@
+﻿@model Data.Models.EuroFixture
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Fixture</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HomeTeam)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HomeTeam)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AwayTeam)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AwayTeam)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HomeScore)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HomeScore)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AwayScore)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AwayScore)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

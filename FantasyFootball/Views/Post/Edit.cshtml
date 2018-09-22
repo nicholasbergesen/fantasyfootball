@@ -1,0 +1,37 @@
+﻿@model Data.Models.Post
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit post</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>post content</legend>
+
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.DatePosted)
+        @Html.HiddenFor(model => model.PostedBy)
+
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Comment, new { @class = "postarea" })
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to posts", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
