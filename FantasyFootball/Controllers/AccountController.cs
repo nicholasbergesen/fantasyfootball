@@ -20,6 +20,9 @@ namespace FantasyFootball.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if(!string.IsNullOrEmpty(HttpContext.User.Identity.Name))
+                return RedirectToLocal(returnUrl);
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
