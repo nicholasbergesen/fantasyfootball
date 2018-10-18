@@ -79,6 +79,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201609151726161_Initial.cs" />
+    <Compile Include="Migrations\201609151726161_Initial.Designer.cs">
+      <DependentUpon>201609151726161_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201609151733276_AddLeagueTable.cs" />
     <Compile Include="Migrations\201609151733276_AddLeagueTable.Designer.cs">
       <DependentUpon>201609151733276_AddLeagueTable.cs</DependentUpon>
@@ -117,6 +121,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609151726161_Initial.resx">
+      <DependentUpon>201609151726161_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609151733276_AddLeagueTable.resx">
       <DependentUpon>201609151733276_AddLeagueTable.cs</DependentUpon>
     </EmbeddedResource>
